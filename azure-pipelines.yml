@@ -1,0 +1,28 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    echo "Hello, world!"
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo "Building and testing the app"
+    mvn clean install
+  displayName: 'Build and test the app'
+
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(System.DefaultWorkingDirectory)/target'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy the build artifact'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'myapp'
+  displayName: 'Publish the build artifact'
+
