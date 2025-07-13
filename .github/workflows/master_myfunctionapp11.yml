@@ -33,7 +33,7 @@ jobs:
       - name: Copy JAR to output folder
         run: |
           mkdir -p output
-          cp target/*.jar output/
+          cp target/*.war output/
 
 
       - name: Deploy to Azure Function App
