@@ -40,5 +40,5 @@ jobs:
         uses: azure/functions-action@v1
         with:
           app-name: myfunctionapp11
-          package: target/azure-functions/myfunctionapp11
+          package: output
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
